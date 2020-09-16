@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_AlignedCollectionViewFlowLayout_TestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_AlignedCollectionViewFlowLayout_TestsVersionString[];
+FOUNDATION_EXPORT double Pods_VennAlignedCollectionViewFlowLayout_TestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_VennAlignedCollectionViewFlowLayout_TestsVersionString[];
 

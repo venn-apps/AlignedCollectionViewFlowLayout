@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## AlignedCollectionViewFlowLayout
+## VennAlignedCollectionViewFlowLayout
 
 Copyright (c) 2017 Mischa Hildebrand <web@mischa-hildebrand.de>
 

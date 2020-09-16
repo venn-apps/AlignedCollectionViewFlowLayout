@@ -1,5 +1,5 @@
 //
-//  AlignedCollectionViewFlowLayout.swift
+//  VennAlignedCollectionViewFlowLayout.swift
 //
 //  Created by Mischa Hildebrand on 12/04/2017.
 //  Copyright © 2017 Mischa Hildebrand.
@@ -49,7 +49,7 @@ public enum VerticalAlignment: Alignment {
     case bottom
 }
 
-/// A horizontal alignment used internally by `AlignedCollectionViewFlowLayout`
+/// A horizontal alignment used internally by `VennAlignedCollectionViewFlowLayout`
 /// to layout the items, after resolving layout direction specifics.
 private enum EffectiveHorizontalAlignment: Alignment {
     case left
@@ -77,7 +77,7 @@ private struct AlignmentAxis<A: Alignment> {
 /// over the horizontal and vertical alignment of the cells.
 /// You can use it to align the cells like words in a left- or right-aligned text
 /// and you can specify how the cells are vertically aligned in their row.
-open class AlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
+open class VennAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     // MARK: - 🔶 Properties
     
@@ -124,6 +124,16 @@ open class AlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
             default:
                 break
             }
+        @unknown default:
+            switch horizontalAlignment {
+            case .leading:
+                return .left
+            case .trailing:
+                return .right
+            default:
+                break
+            }
+            
         }
 
         // It's safe to force-unwrap as `.leading` and `.trailing` are covered
@@ -363,7 +373,7 @@ fileprivate extension UICollectionViewLayoutAttributes {
     ///
     /// - Parameter collectionViewLayout: The layout for which to perform the check.
     /// - Returns: `true` if the represented item is the first item in the line, else `false`.
-    func isRepresentingFirstItemInLine(collectionViewLayout: AlignedCollectionViewFlowLayout) -> Bool {
+    func isRepresentingFirstItemInLine(collectionViewLayout: VennAlignedCollectionViewFlowLayout) -> Bool {
         if currentItem <= 0 {
             return true
         }
@@ -381,7 +391,7 @@ fileprivate extension UICollectionViewLayoutAttributes {
     ///
     /// - Parameter collectionViewLayout: The layout for which to perform the check.
     /// - Returns: `true` if the represented item is the last item in the line, else `false`.
-    func isRepresentingLastItemInLine(collectionViewLayout: AlignedCollectionViewFlowLayout) -> Bool {
+    func isRepresentingLastItemInLine(collectionViewLayout: VennAlignedCollectionViewFlowLayout) -> Bool {
         guard let itemCount = collectionViewLayout.collectionView?.numberOfItems(inSection: currentSection) else {
             return false
         }
@@ -427,7 +437,7 @@ fileprivate extension UICollectionViewLayoutAttributes {
     /// as defined by the collection view layout's `minimumInteritemSpacing`.
     ///
     /// - Parameter collectionViewLayout: The layout on which to perfom the calculations.
-    private func alignToPrecedingItem(collectionViewLayout: AlignedCollectionViewFlowLayout) {
+    private func alignToPrecedingItem(collectionViewLayout: VennAlignedCollectionViewFlowLayout) {
         let itemSpacing = collectionViewLayout.minimumInteritemSpacing
         
         if let precedingItemAttributes = collectionViewLayout.layoutAttributesForItem(at: precedingIndexPath) {
@@ -439,7 +449,7 @@ fileprivate extension UICollectionViewLayoutAttributes {
     /// as defined by the collection view layout's `minimumInteritemSpacing`.
     ///
     /// - Parameter collectionViewLayout: The layout on which to perfom the calculations.
-    private func alignToFollowingItem(collectionViewLayout: AlignedCollectionViewFlowLayout) {
+    private func alignToFollowingItem(collectionViewLayout: VennAlignedCollectionViewFlowLayout) {
         let itemSpacing = collectionViewLayout.minimumInteritemSpacing
         
         if let followingItemAttributes = collectionViewLayout.layoutAttributesForItem(at: followingIndexPath) {
@@ -451,7 +461,7 @@ fileprivate extension UICollectionViewLayoutAttributes {
     ///
     /// - Parameters:
     ///   - collectionViewLayout: The layout providing the alignment information.
-    func alignHorizontally(collectionViewLayout: AlignedCollectionViewFlowLayout) {
+    func alignHorizontally(collectionViewLayout: VennAlignedCollectionViewFlowLayout) {
         
         guard let alignmentAxis = collectionViewLayout.alignmentAxis else {
             return
@@ -481,7 +491,7 @@ fileprivate extension UICollectionViewLayoutAttributes {
     /// Aligns the frame vertically as specified by the collection view layout's `verticalAlignment`.
     ///
     /// - Parameter collectionViewLayout: The layout providing the alignment information.
-    func alignVertically(collectionViewLayout: AlignedCollectionViewFlowLayout) {
+    func alignVertically(collectionViewLayout: VennAlignedCollectionViewFlowLayout) {
         let alignmentAxis = collectionViewLayout.verticalAlignmentAxis(for: self)
         align(toAlignmentAxis: alignmentAxis)
     }

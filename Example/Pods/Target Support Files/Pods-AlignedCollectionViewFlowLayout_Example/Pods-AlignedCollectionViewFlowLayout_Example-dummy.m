@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_AlignedCollectionViewFlowLayout_Example : NSObject
+@interface PodsDummy_Pods_VennAlignedCollectionViewFlowLayout_Example : NSObject
 @end
-@implementation PodsDummy_Pods_AlignedCollectionViewFlowLayout_Example
+@implementation PodsDummy_Pods_VennAlignedCollectionViewFlowLayout_Example
 @end

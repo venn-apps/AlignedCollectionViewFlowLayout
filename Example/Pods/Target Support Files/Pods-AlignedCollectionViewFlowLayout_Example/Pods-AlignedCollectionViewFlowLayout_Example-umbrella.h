@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_AlignedCollectionViewFlowLayout_ExampleVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_AlignedCollectionViewFlowLayout_ExampleVersionString[];
+FOUNDATION_EXPORT double Pods_VennAlignedCollectionViewFlowLayout_ExampleVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_VennAlignedCollectionViewFlowLayout_ExampleVersionString[];
 
